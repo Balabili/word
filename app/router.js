@@ -5,6 +5,6 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/api/v1/getHome', controller.home.index);
-  router.get('/', controller.home.index);
+  router.post('/api/v1/register', controller.register.register);
+  // router.get('/', controller.home.index);
 };

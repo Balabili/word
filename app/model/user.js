@@ -4,7 +4,7 @@ module.exports = app => {
   const { STRING, INTEGER, DATE, UUID } = app.Sequelize;
   const User = app.model.define('user', {
     id: { type: UUID, primaryKey: true, defaultValue: UUID },
-    email: STRING,
+    email: { type: STRING, allowNull: false, validate: { isEmail: true } },
     login: { type: STRING, allowNull: false },
     password: { type: STRING(32), allowNull: false },
     role: { type: INTEGER, allowNull: false, defaultValue: 2 },
