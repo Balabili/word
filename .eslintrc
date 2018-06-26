@@ -1,0 +1,7 @@
+{
+  "extends": "eslint-config-egg",
+  "rules": {
+    "space-before-function-paren": "off",
+    "arrow-parens": "off"
+  }
+}
