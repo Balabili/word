@@ -13,6 +13,10 @@ module.exports = app => {
     updated_at: DATE,
   });
 
+  User.associate = function () {
+    app.model.User.hasMany(app.model.NewWordList, { as: 'newWordLists', foreignKey: 'user_id' });
+  };
+
   User.prototype.logSignin = async function () {
     await this.update({ last_sign_in_at: new Date() });
   };
