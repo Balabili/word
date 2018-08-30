@@ -1,6 +1,7 @@
 {
   "extends": "eslint-config-egg",
   "rules": {
+    "no-bitwise": "off",
     "space-before-function-paren": "off",
     "arrow-parens": "off"
   }

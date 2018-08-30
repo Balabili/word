@@ -1,15 +1,12 @@
 'use strict';
 
-const generateEnumKey = (enumObj) => {
-  const enumList = [];
-  for (const key in enumObj) {
-    if (Object.hasOwnProperty(key)) {
-      enumList.push(key);
-    }
+const generateUUID = () => {
+  function S4() {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
   }
-  return enumList;
+  return (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4());
 };
 
 module.exports = {
-  generateEnumKey,
+  generateUUID,
 };
