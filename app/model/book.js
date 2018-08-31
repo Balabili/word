@@ -1,11 +1,12 @@
 'use strict';
 
 module.exports = app => {
-  const { STRING, UUID, UUIDV1 } = app.Sequelize;
+  const { STRING, INTEGER, UUID, UUIDV1 } = app.Sequelize;
   const Book = app.model.define('books', {
     id: { type: UUID, primaryKey: true, defaultValue: UUIDV1 },
     name: { type: STRING, allowNull: false },
     user_id: { type: UUID, allowNull: false },
+    type: { type: INTEGER, allowNull: false },
   });
 
   Book.associate = function () {
