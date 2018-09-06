@@ -5,12 +5,22 @@ const UserRole = {
   user: 2,
 };
 
-const bookType = {
+const WordLevel = {
+  N0: 0,
+  N1: 1,
+  N2: 2,
+  N3: 3,
+  N4: 4,
+  N5: 5,
+};
+
+const BookType = {
   NewWord: 1,
   ErrorWord: 1,
 };
 
 module.exports = {
   UserRole,
-  bookType,
+  BookType,
+  WordLevel,
 };

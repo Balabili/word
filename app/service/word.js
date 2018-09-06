@@ -9,11 +9,13 @@ class WordService extends Service {
     this.Word = this.ctx.model.Word;
     this.Translate = this.ctx.model.Translate;
   }
-
+  // 等级，假名，词性，中文翻译
   async getList({ current, pageSize, key, keyWord }) {
     const queryString = 'select * from words';
     const quertResult = await this.app.mysql.query(queryString);
   }
+
+  async getWordById(id) { }
 
   async addWord(data) {
     const wordId = generateUUID();
@@ -23,9 +25,7 @@ class WordService extends Service {
       const { alias, romaji, level, translate } = data.translate;
       await conn.insert('words', {
         id: wordId,
-        alias,
-        romaji,
-        level,
+        alias, romaji, level,
         created_at: date,
         updated_at: date,
       });
@@ -75,13 +75,13 @@ class WordService extends Service {
 
   async deleteWord(id) {
     const mysql = this.app.mysql;
-    const date = new Date().toLocaleString();
     const conn = await mysql.beginTransaction();
     try {
-      const trans = mysql.select('translates', { where: { word_id: id } });
-      await mysql.delete('words', { id });
+      await conn.delete('words', { id });
+      await conn.delete('translates', { word_id: id });
     } catch (error) {
-
+      await conn.rollback();
+      return { success: false, message: error };
     }
   }
 

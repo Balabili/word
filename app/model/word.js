@@ -4,8 +4,11 @@ module.exports = app => {
   const { STRING, INTEGER, UUID, UUIDV1 } = app.Sequelize;
   const Word = app.model.define('word', {
     id: { type: UUID, primaryKey: true, defaultValue: UUIDV1 },
-    alias: { type: STRING, allowNull: false },
+    // 假名
+    kana: { type: STRING, allowNull: false },
+    // 罗马字
     romaji: { type: STRING, allowNull: false },
+    // 等级N0-N5
     level: { type: INTEGER, allowNull: false },
   });
 
